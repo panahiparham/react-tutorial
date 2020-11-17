@@ -21,3 +21,38 @@ As you can see i've added stuff like title, subtitle, About Me paragraph, and tw
 I've also added an icon section to `data.json` and added the actual icons in the `public/` folder at location `images/down.png` and `images/up.png` you can go into the public folder to check them out.
 
 
+#### Let's Add the HTML of our page 
+
+Head into `src/App.js` and delete that "Hello React" string from before.<br />
+At this point we're going to add the HTML of the entire page without worrying about CSS or React Components or any other functionality. We will Create the CSS and abstract this HTML into React Components in the next sections
+
+The main layout of our site will be :
+
+```
+
+    <div className="App">
+
+      <div className="container">
+
+        <div className="title-section"></div>
+
+        <div className="about-section"></div>
+
+        <div className="projects-section"></div>
+
+      </div>
+
+    </div>
+
+```
+<br/>
+
+
+
+<br/>
+*note* One difference between HTML and ReactScript is that html in react files has "className" proprty instead of "class" this is because javascript reserves "class" as a keyword.
+
+
+
+
+
