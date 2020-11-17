@@ -1,0 +1,48 @@
+{
+    "title": "Welcome To My Website",
+    "subtitle": " Student of Computer Science & Mathematics",
+    "links": {
+        "github": "https://github.com/panahiparham",
+        "Email": "mailto:panahiparham@gmail.com"
+    },
+    "sections": [
+        {
+            "title": "About Me",
+            "items": [
+                {
+                    "type": "p",
+                    "content": "Hello, my name's parham. I'm Currently studying mathematics and computer sciente at IAUCTB and living in Terhan Iran."
+
+                }
+            ]
+        },
+        {
+            "title": "Projects",
+            "subtitle": "Here comes some of the stuff i've done. you can find more at my github.",
+            "items": [
+                {
+                    "type": "box",
+                    "content": {
+                        "description": "Predicting Laptop Prices with machine learning. this project uses web scapring / databases / machine learning.",
+                        "title": "laptop price prediction",
+                        "link": "https://github.com/panahiparham/laptop_price_prediction_digikala"
+                    }
+                },
+                {
+                    "type": "box",
+                    "content": {
+                        "description": "A series of Modern OpenGL examples done with Python.",
+                        "title": "OpenGL Examples",
+                        "link": "https://github.com/panahiparham/opengl-python-examples"
+                    }
+
+                }
+            ]
+
+        }
+    ],
+    "icons":{
+        "down": "images/down.png",
+        "up": "images/up.png"
+    }
+}
