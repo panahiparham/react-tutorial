@@ -66,9 +66,11 @@ Let's Create the title-section part of the page.
 ```
 
         <div className="title-section">
+
           <h1>{data.title}</h1>
 
           <h2>{data.subtitle}</h2>
+          
         </div>
 
 ```
