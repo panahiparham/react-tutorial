@@ -45,14 +45,34 @@ The main layout of our site will be :
     </div>
 
 ```
-<br/>
-
-
 
 <br/>
-**note** One difference between HTML and ReactScript is that html in react files has "className" proprty instead of "class" this is because javascript reserves "class" as a keyword.
+*note* One difference between HTML and ReactScript is that html in react files has "className" proprty instead of "class" this is because javascript reserves "class" as a keyword.
 
+<br/>
 
+The `<div className="container">` will be a Wrapper for the entire page and we will use it to style out page and make it fit correctly to the screen. <br />
 
+The `<div className="title-section">` will be where we display the title and subtitle of the page. <br />
+
+Instead of Writing the text of our website in the code directly. we've saved them into `data.json` before and now we'll import that file to be used in the `App.js` file. this is how we import it: <br />
+
+`import data from "./data.json";`
+
+Now we have access to the `data` variable which contains all of our data <br />
+
+Let's Create the title-section part of the page.
+
+```
+
+        <div className="title-section">
+          <h1>{data.title}</h1>
+
+          <h2>{data.subtitle}</h2>
+        </div>
+
+```
+
+*note* In order or put javascript code in the middle of HTML tags we have to put the code around { } in this cased we used it to access the title element of out data.json file.
 
 
