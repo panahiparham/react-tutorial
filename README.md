@@ -50,7 +50,7 @@ The main layout of our site will be :
 
 
 <br/>
-*note* One difference between HTML and ReactScript is that html in react files has "className" proprty instead of "class" this is because javascript reserves "class" as a keyword.
+**note** One difference between HTML and ReactScript is that html in react files has "className" proprty instead of "class" this is because javascript reserves "class" as a keyword.
 
 
 
