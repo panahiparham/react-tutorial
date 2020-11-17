@@ -3,17 +3,16 @@
 Our Goal is to Create a Resume Website With Create React App.
 The final version will look something like [this website](https://panahiparham.github.io/react-resume/)
 
+
 ## Step 1 . Setting up the project
 
-Every Create-React-App starts with creating the project. Hea
+Every Create-React-App starts with creating the project.
+Head in to the folder where you want your project to live and execute the following command.
 
-### `yarn start`
+### `npx create-react-app resume`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+CRA will run and generate your "resume" project.
+Lets look into that folder
 
 ### `yarn test`
 
