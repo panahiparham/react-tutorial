@@ -1,10 +1,11 @@
-# Getting Started with Create React App
+# Creating a Resume Website with React.js
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Our Goal is to Create a Resume Website With Create React App.
+The final version will look something like [this website](https://panahiparham.github.io/react-resume/)
 
-## Available Scripts
+## Step 1 . Setting up the project
 
-In the project directory, you can run:
+Every Create-React-App starts with creating the project. Hea
 
 ### `yarn start`
 
