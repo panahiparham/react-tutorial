@@ -18,6 +18,11 @@ for example this is the link for the Open Sans font `<link href="https://fonts.g
 
 <br />
 
+that `text-align: center;` was in our project by default, let is stay there to make everything centered and nice.
+
+<br />
+
+
 Great, now our text is a bit better to look at :)
 
 #### Adding styling to TitleSection of the page 
