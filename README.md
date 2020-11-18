@@ -18,7 +18,7 @@ for example this is the link for the Open Sans font `<link href="https://fonts.g
 
 <br />
 
-that `text-align: center;` was in our project by default, let is stay there to make everything centered and nice.
+that `text-align: center;` was in our project by default, let is stay there to make everything nice and centered.
 
 <br />
 
@@ -128,6 +128,57 @@ Of course we now need to create the `TitleSection.css` inside `src/` folder, let
 
 <br />
 
+<br />
 
+We want the following layout for the TitleSectiob
+
+```
+**************************  
+*                        *
+*                        * 
+*          H1            *
+*                        *
+**************************
+*          H2            *
+*                        *
+*                        *
+*                        *
+**************************  
+
+```
+
+<br />
+
+Add these lines into `TitleSection.css`
+
+```
+.title-section {
+
+    height: 100vh;
+
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: 
+    "h1"
+    "h2";
+}
+
+.title-section > h1 {
+    grid-area: h1;
+
+    margin-top: 20vh;
+}
+
+.title-section > h2 {
+    grid-area: h2;
+}
+
+```
+
+<br />
+
+Other than CSS grid stuff, i've just added a height for the page and a margin to H1 to make them render in the place that i like. Now the TitleSection should take one full window height and H1, H2 tags should be a bit apart from each other. 
+
+<br />
 
 

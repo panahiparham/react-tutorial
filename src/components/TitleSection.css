@@ -1,0 +1,20 @@
+.title-section {
+
+    height: 100vh;
+
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: 
+    "h1"
+    "h2";
+}
+
+.title-section > h1 {
+    grid-area: h1;
+
+    margin-top: 20vh;
+}
+
+.title-section > h2 {
+    grid-area: h2;
+}
