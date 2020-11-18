@@ -399,6 +399,127 @@ We are almost done with the CSS of this page, but i want to add one more thing. 
 
 <br />
 
+This is why we created a "container" component for the page, let's go into the `Container.js`. Let's wrap the container div with `<div className="screen-wrapper">` and create and import `Container.css`. The Container component now looks like,
+
+<br />
+
+```
+import React, { Component } from "react";
+
+import "./Container.css"
+
+export default class Container extends Component {
+  render() {
+    const { children } = this.props;
+
+    return (
+      <div className="screen-wrapper">
+
+        <div className="container">
+          {children}
+        </div>
+
+      </div>
+    );
+  }
+}
+
+
+```
+
+<br />
+
+Let's head into `Container.css`, We want 2 different layouts for the screen:
+
+* window less than 900 pixel wide
+
+<br />
+
+```
+**************************  
+*                        *
+*                        *
+*                        *
+*                        *
+*       container        *
+*                        *
+*                        *
+*                        *
+*                        *
+**************************  
+
+```
+
+<br />
+
+* window greater than 900 pixel wide
+
+<br />
+
+```
+***************************  
+*   *                 *   *
+*   *                 *   *
+*   *                 *   *
+*   *                 *   *
+*   *    container    *   *
+*   *                 *   *
+*   *                 *   *
+*   *                 *   *
+*   *                 *   *
+***************************  
+
+```
+
+<br />
+
+Basically i want borders to the left and right of the container. Add these lines to  `Container.css` .
+
+<br />
+
+```
+.screen-wrapper {
+
+    background-color: rgb(89, 187, 252);
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+    " container ";
+}
+
+/* this part of the code runs only if window is more than 900 pixel wide  */
+@media (min-width: 900px) {
+    .screen-wrapper {
+      grid-template-columns: 1fr 5fr 1fr;
+      grid-template-areas:
+        " . container . ";
+  
+    }
+  }
+
+
+.screen-wrapper > .container {
+    grid-area: container;
+}
+
+```
+
+<br />
+
+And with that we are done with the CSS section of our page. that took a long time :)
+
+<br />
+
+In the next section we will add buttons to each part of the page to scroll to the next section when clicked .
+
+<br />
+
+
+
+
+
+
 
 
 

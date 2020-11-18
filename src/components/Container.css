@@ -1,0 +1,24 @@
+.screen-wrapper {
+
+    background-color: rgb(89, 187, 252);
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+    " container ";
+}
+
+/* this part of the code runs only if window is more than 900 pixel wide  */
+@media (min-width: 900px) {
+    .screen-wrapper {
+      grid-template-columns: 1fr 5fr 1fr;
+      grid-template-areas:
+        " . container . ";
+  
+    }
+  }
+
+
+.screen-wrapper > .container {
+    grid-area: container;
+}
