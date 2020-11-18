@@ -216,7 +216,7 @@ Our CSS will be something like,
 
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 40vh 1fr;
+    grid-template-rows: 40% 1fr;
     grid-template-areas: 
     " h3 . "
     " p p ";
@@ -225,7 +225,7 @@ Our CSS will be something like,
 .about-section > h3 {
     grid-area: h3;
 
-    margin-top: 20vh;
+    margin-top: 20%;
 
     font-size: x-large;
 }
@@ -233,17 +233,172 @@ Our CSS will be something like,
 .about-section > p {
     grid-area: p;
 
-    margin-top: 10vh;
-    margin-bottom: 10vh;
-    margin-left: 15vw;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    margin-left: 15%;
 
     text-align: left;
     font-size: larger;
+}
+```
+
+<br />
+
+Finally for the Projects Section we want,
+
+<br />
+
+```
+**************************  
+*    H3     *            *
+**************************
+*    H4     *            * 
+**************************
+*                        *
+*        Project         *
+*                        *
+*        Project         *
+*                        *
+*        Project         *
+*                        *
+*          ...           *
+**************************  
+
+```
+
+<br />
+
+Now this one is a bit more complicated, since we want to support any number of Projects. so we make the bottom section of the page another grid (yes you can put grids inside other grids) and create a variable rows template for the inner grid. Here is the code to do it,
+
+<br />
+
+
+First i wrap each project in ProjectsSection in another div with class "projects-wrapper", now our `ProjectsSection.js` will look like this,
+
+<br />
+
+```
+  import React, { Component } from "react";
+
+  import data from "../data.json";
+
+  import "./ProjectsSection.css";
+
+  export default class ProjectsSection extends Component {
+    render() {
+      return (
+        <div className="projects-section">
+          <h3>{data.sections[1].title}</h3>
+
+          <h4>{data.sections[1].subtitle}</h4>
+
+
+          {/* This is the new div */}
+          <div className="projects-wrapper">
+            {data.sections[1].items.map((project) => {
+              return (
+                <div className="project">
+                  <h4>
+                    <a href={project.content.link}>{project.content.title}</a>
+                  </h4>
+
+                  <p>{project.content.description}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      );
+    }
+  }
+
+```
+
+<br />
+
+Now i can create the `ProjectsSection.css` as follows,
+
+<br />
+
+
+
+```
+.projects-section {
+
+    background-color: rgb(248, 243, 237);
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 5fr;
+    grid-template-areas: 
+    " h3 . "
+    " h4 . "
+    " projects projects";
+}
+
+.projects-section > h3 {
+    grid-area: h3;
+
+    text-align: left;
+
+    font-size: x-large;
+
+    margin-top: 15%;
+    margin-left: 20%;
+}
+
+.projects-section > h4 {
+    grid-area: h4;
+
+    text-align: left;
+
+    margin-top: 5%;
+    margin-bottom: 5%;
+
+    margin-left: 20%;
+
+}
+
+.projects-section > .projects-wrapper {
+    grid-area: projects;
+
+    /* this is out nested grid */
+    /* with grid auto rows each project will be placed into a row */
+    display: grid;
+    grid-auto-rows: 150px;
+
+    
+    gap: 2rem;
+
+    margin-top: 5%;
+    margin-bottom: 15%;
+
+}
+
+
+.projects-section > .projects-wrapper > .project {
+
+    border: 1px solid black;
+    border-radius: 5px;
+
+    margin-left: 5%;
+    margin-right: 5%;
+
+    padding: 1%;
 }
 
 ```
 
 <br />
+
+If the nested grid feels weird you can open the developer tools in the browser and check out the borderline of the grids by inspecting divs that have `display: grid;` .
+
+<br />
+
+We are almost done with the CSS of this page, but i want to add one more thing. I want the layout of the entire page to change if the window rendering the webpage is less than 900 pixels wide. So our page will look different on Mobile Phones than on Desktops. This feature is called "Responsive" ness of the web page.
+
+<br />
+
 
 
 

@@ -2,16 +2,17 @@ import React, { Component } from "react";
 
 import data from "../data.json";
 
+import "./ProjectsSection.css";
+
 export default class ProjectsSection extends Component {
-
-  render() {   
-
+  render() {
     return (
-        <div className="projects-section">
-          <h3>{data.sections[1].title}</h3>
+      <div className="projects-section">
+        <h3>{data.sections[1].title}</h3>
 
-          <h4>{data.sections[1].subtitle}</h4>
+        <h4>{data.sections[1].subtitle}</h4>
 
+        <div className="projects-wrapper">
           {data.sections[1].items.map((project) => {
             return (
               <div className="project">
@@ -24,6 +25,7 @@ export default class ProjectsSection extends Component {
             );
           })}
         </div>
+      </div>
     );
   }
 }

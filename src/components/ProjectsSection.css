@@ -1,0 +1,68 @@
+.projects-section {
+
+
+    background-color: rgb(248, 243, 237);
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 5fr;
+    grid-template-areas: 
+    " h3 . "
+    " h4 . "
+    " projects projects";
+}
+
+.projects-section > h3 {
+    grid-area: h3;
+
+    text-align: left;
+
+    font-size: x-large;
+
+    margin-top: 15%;
+    margin-left: 20%;
+}
+
+.projects-section > h4 {
+    grid-area: h4;
+
+    text-align: left;
+
+    margin-top: 5%;
+    margin-bottom: 5%;
+
+    margin-left: 20%;
+
+}
+
+.projects-section > .projects-wrapper {
+    grid-area: projects;
+
+    /* this is out nested grid */
+    /* with grid auto rows each project will be placed into a row */
+    display: grid;
+    grid-auto-rows: 150px;
+
+
+    gap: 2rem;
+
+    margin-top: 5%;
+    margin-bottom: 15%;
+
+}
+
+
+.projects-section > .projects-wrapper > .project {
+
+    border: 1px solid black;
+    border-radius: 5px;
+
+    margin-left: 5%;
+    margin-right: 5%;
+
+    padding: 1%;
+}
+
+
+
+
