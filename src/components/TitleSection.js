@@ -2,6 +2,8 @@ import React, { Component } from "react";
 
 import data from "../data.json";
 
+import "./TitleSection.css";
+
 export default class TitleSection extends Component {
 
   render() {   
