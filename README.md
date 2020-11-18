@@ -126,7 +126,6 @@ Since We've abstracted everything into Components, we can add styling to each co
 
 Of course we now need to create the `TitleSection.css` inside `src/` folder, let's do that now. Create `src/TitleSection.css` and open it up.
 
-<br />
 
 <br />
 
@@ -155,6 +154,7 @@ Add these lines into `TitleSection.css`
 .title-section {
 
     height: 100vh;
+    background-color: rgb(248, 243, 237);
 
     display: grid;
     grid-template-rows: 1fr 1fr;
@@ -177,8 +177,74 @@ Add these lines into `TitleSection.css`
 
 <br />
 
-Other than CSS grid stuff, i've just added a height for the page and a margin to H1 to make them render in the place that i like. Now the TitleSection should take one full window height and H1, H2 tags should be a bit apart from each other. 
+Other than CSS grid stuff, i've just added a height for the page and a margin to H1 to make them render in the place that i like and added some color. Now the TitleSection should take one full window height and H1, H2 tags should be a bit apart from each other. Moving onto About Section
 
 <br />
+
+Create the corresponding `AboutSection.css` and import it into `AboutSection.js`. We want this layout,
+
+<br />
+
+We want the following layout for the TitleSectiob
+
+```
+**************************  
+*           *            *
+*           *            * 
+*     H3    *            *
+*           *            *
+************************** 
+*                        *
+*     P                  *
+*                        *
+*                        *
+**************************  
+
+```
+
+<br />
+
+Our CSS will be something like,
+
+<br />
+
+```
+.about-section {
+
+    height: 100vh;
+    background-color: rgb(188, 214, 248);
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 40vh 1fr;
+    grid-template-areas: 
+    " h3 . "
+    " p p ";
+}
+
+.about-section > h3 {
+    grid-area: h3;
+
+    margin-top: 20vh;
+
+    font-size: x-large;
+}
+
+.about-section > p {
+    grid-area: p;
+
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+    margin-left: 15vw;
+
+    text-align: left;
+    font-size: larger;
+}
+
+```
+
+<br />
+
+
 
 

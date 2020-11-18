@@ -2,6 +2,8 @@ import React, { Component } from "react";
 
 import data from "../data.json";
 
+import "./AboutSection.css";
+
 export default class AboutSection extends Component {
 
   render() {   

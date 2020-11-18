@@ -1,0 +1,31 @@
+.about-section {
+
+    height: 100vh;
+    background-color: rgb(188, 214, 248);
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 40vh 1fr;
+    grid-template-areas: 
+    " h3 . "
+    " p p ";
+}
+
+.about-section > h3 {
+    grid-area: h3;
+
+    margin-top: 20vh;
+
+    font-size: x-large;
+}
+
+.about-section > p {
+    grid-area: p;
+
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+    margin-left: 15vw;
+
+    text-align: left;
+    font-size: larger;
+}

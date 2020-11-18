@@ -1,6 +1,7 @@
 .title-section {
 
     height: 100vh;
+    background-color: rgb(248, 243, 237);
 
     display: grid;
     grid-template-rows: 1fr 1fr;
