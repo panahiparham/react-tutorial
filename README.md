@@ -281,7 +281,7 @@ The last thing we'll do in the section is to create a component for the containe
 
 <br />
 
-Here we used a prop called "children" which contains every HTML tag inside this component. since we want to replace the container div with this component, children will contain all of the HTML of our TitleSection, AboutSection and ProjectsSection and we just placed them into our component with,
+Here we used a prop called "children" which contains every HTML tag inside this component. since we want to replace the container div with this component, children will contain all of the HTML of our TitleSection, AboutSection and ProjectsSection. We then put all of that HTML into the div tag of this component with,
 
 
 ```
@@ -293,6 +293,54 @@ Here we used a prop called "children" which contains every HTML tag inside this 
 
 <br />
 
+Now inside `App.js` import the Containder and replace the container div with our new component.
+
+<br />
+
+```
+  import logo from "./logo.svg";
+  import "./App.css";
+
+
+  import TitleSection from "./components/TitleSection";
+  import AboutSection from "./components/AboutSection";
+  import ProjectsSection from "./components/ProjectsSection";
+
+  import Container from "./components/Container";
+
+
+  function App() {
+    return (
+      <div className="App">
+
+        <Container>
+
+          <TitleSection />
+
+          <AboutSection />
+
+          <ProjectsSection />
+
+        </Container>
+        
+      </div>
+    );
+  }
+
+  export default App;
+
+```
+
+<br />
+
+Our Page should hopefully look the same as when we started this section. but now all the code is separated and reusable and easy to change :)
+
+
+<br />
+
+In the next section we'll be adding CSS to each of our components and make our webpage pretty.   :)
+
+<br />
 
 
 
