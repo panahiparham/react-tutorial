@@ -90,5 +90,9 @@ I hope i was able to explain things clearly :)
 
 <br />
 
+quick note. after deploying the site , local versions of the page doesnt load the icons and i don't know why. so if that happens for you too don't worry :)
+
+<br />
+
 
 
