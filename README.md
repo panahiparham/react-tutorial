@@ -4,7 +4,7 @@ Congratulations We are done yoohooo. The only thing left to do is to deploy this
 
 <br />
 
-The first step is to upload the project onto github, make sure you've setup ssh keys for your computers and github account correctly and then Create an empty github repo lets say its url is `https://github.com/your-user-name/your-project-name` then we can push our web page onto github with these commands (executed when in the root folder of the project).
+The first step is to upload the project onto github, make sure you've setup ssh keys for your computer and github account correctly and then Create an empty github repo lets say its url is `https://github.com/your-user-name/your-project-name` then we can push our web page onto github with these commands (executed when in the root folder of the project).
 
 <br />
 
