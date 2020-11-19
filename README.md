@@ -74,6 +74,10 @@ You can now see your webpage at `https://your-user-name.github.io/your-project-n
 
 <br />
 
+Finally Do another git pull / git push to synch everything.
+
+<br />
+
 yaaayyyyyyyyyyyyyy :)
 
 <br />
