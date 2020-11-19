@@ -1,98 +1,36 @@
-### Step 6 . Deploying on github
+# Creating Webpages with React.js
 
-Congratulations We are done yoohooo. The only thing left to do is to deploy this page to someplace on the internet. Deployment with Create-React-App is covered in [this page](https://create-react-app.dev/docs/deployment/) . we will use only a small portion of the information in this page namely the part about deploying on github pages.
-
-<br />
-
-The first step is to upload the project onto github, make sure you've setup ssh keys for your computer and github account correctly and then Create an empty github repo lets say its url is `https://github.com/your-user-name/your-project-name` then we can push our web page onto github with these commands (executed when in the root folder of the project).
+hiii i'm going create a small resume website and explain what i do at each step.
 
 <br />
 
-`git init`
+Each section is a branch in this repo so you can follow step by step.
 
-`git add .`
-
-`git commit -m "first commit"`
-
-`git remote add origin https://github.com/your-user-name/your-project-name`
-
-`git branch -M main`
-
-`git push -u origin main`
 
 <br />
 
-If everything when fine, the code of your project should be in that github repo now :)
+The code of each section is in the files in the corresponding branch. for example in the "Adding-HTML" secion. all the explanations are in the README.md of Adding-HTML branch and the codes written in the section are also in the repo in the same branch.
+
 
 <br />
 
-Now following the step by step instructions in [this page](https://create-react-app.dev/docs/deployment/) for the github pages deployment. first add a `homepage` field to `package.json`
+## Contents
 
-` "homepage": "https://your-user-name.github.io/your-project-name", `
+* step 1 . Project-setup
+* step 2 . Adding-HTML
+* step 3 . Adding-components
+* step 4 . Adding-CSS
+* step 5 . Adding-Scrolling
+* step 6 . Deployment
 
-<br />
-
-So `package.json` will look like
-
-```
-{
-  "homepage": "https://your-user-name.github.io/your-project-name",
-  "name": "resume-tutorial",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    .
-    .
-    .
-
-```
+For each section there is a branch created in this repo, you can head into "Project-Setup" branch to get started :)
 
 <br />
 
-Then we add these two lines to `package.json`
-
-```
-  "scripts": {
-+   "predeploy": "npm run build",
-+   "deploy": "gh-pages -d build",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-
-```
+I hope i can explain the process clearly and be helpful :)
 
 <br />
 
-Finally we need to install a software
-
-`yarn global add gh-pages`
-
-We can now run `npm run deploy` and that will do everything for us.
+Of course if any section is vague or unclear make sure to ask me. I hope you enjoy :)
 
 <br />
-
-You can now see your webpage at `https://your-user-name.github.io/your-project-name` .
-
-<br />
-
-Finally Do another git pull / git push to synch everything.
-
-<br />
-
-yaaayyyyyyyyyyyyyy :)
-
-<br />
-
-we are done officially done with the project
-
-<br />
-
-I hope i was able to explain things clearly :) 
-
-<br />
-
-quick note. after deploying the site , local versions of the page doesnt load the icons and i don't know why. so if that happens for you too don't worry :)
-
-<br />
-
-
-
