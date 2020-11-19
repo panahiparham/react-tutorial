@@ -9,7 +9,7 @@ Each section is a branch in this repo so you can follow step by step.
 
 <br />
 
-The code of each section is in the files in the corresponding branch. for example in the "Adding-HTML" secion. all the explanations are in the README.md of Adding-HTML branch and the codes written in the section are also in the repo in the same branch.
+The code of each section is in the files in the corresponding branch. for example in the "Adding-HTML" secion, all the explanations are in the README.md of Adding-HTML branch and the code written in the section is also in the repo in the same branch.
 
 
 <br />
