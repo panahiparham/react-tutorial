@@ -26,3 +26,65 @@ If everything when fine, the code of your project should be in that github repo 
 
 <br />
 
+Now following the step by step instructions in [this page](https://create-react-app.dev/docs/deployment/) for the github pages deployment. first add a `homepage` field to `package.json`
+
+` "homepage": "https://your-user-name.github.io/your-project-name", `
+
+<br />
+
+So `package.json` will look like
+
+```
+{
+  "homepage": "https://your-user-name.github.io/your-project-name",
+  "name": "resume-tutorial",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    .
+    .
+    .
+
+```
+
+<br />
+
+Then we add these two lines to `package.json`
+
+```
+  "scripts": {
++   "predeploy": "npm run build",
++   "deploy": "gh-pages -d build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+
+```
+
+<br />
+
+Finally we need to install a software
+
+`yarn global add gh-pages`
+
+We can now run `npm run deploy` and that will do everything for us.
+
+<br />
+
+You can now see your webpage at `https://your-user-name.github.io/your-project-name` .
+
+<br />
+
+yaaayyyyyyyyyyyyyy :)
+
+<br />
+
+we are done officially done with the project
+
+<br />
+
+I hope i was able to explain things clearly :) 
+
+<br />
+
+
+
