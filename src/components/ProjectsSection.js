@@ -4,6 +4,10 @@ import data from "../data.json";
 
 import "./ProjectsSection.css";
 
+import Button from "./Button";
+
+
+
 export default class ProjectsSection extends Component {
   render() {
     return (
@@ -25,6 +29,8 @@ export default class ProjectsSection extends Component {
             );
           })}
         </div>
+
+        <Button goto="home" icon={data.icons.up} className="goto-home" />
       </div>
     );
   }

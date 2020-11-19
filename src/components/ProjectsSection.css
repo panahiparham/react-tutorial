@@ -5,11 +5,12 @@
 
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 5fr;
+    grid-template-rows: 1fr 1fr 5fr 10%;
     grid-template-areas: 
     " h3 . "
     " h4 . "
-    " projects projects";
+    " projects projects"
+    " goto-home goto-home";
 }
 
 .projects-section > h3 {
@@ -61,6 +62,12 @@
     margin-right: 5%;
 
     padding: 1%;
+}
+
+
+.projects-section > .goto-home {
+    grid-area: goto-home;
+
 }
 
 

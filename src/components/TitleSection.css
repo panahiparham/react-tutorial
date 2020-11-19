@@ -7,7 +7,8 @@
     grid-template-rows: 1fr 1fr;
     grid-template-areas: 
     "h1"
-    "h2";
+    "h2"
+    "goto-about";
 }
 
 .title-section > h1 {
@@ -18,4 +19,10 @@
 
 .title-section > h2 {
     grid-area: h2;
+}
+
+.title-section > .goto-about {
+    grid-area: goto-about;
+
+    margin-bottom: 10%;
 }

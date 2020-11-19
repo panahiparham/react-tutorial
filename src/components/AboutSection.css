@@ -5,10 +5,11 @@
 
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 40% 1fr;
+    grid-template-rows: 40% 1fr 10%;
     grid-template-areas: 
     " h3 . "
-    " p p ";
+    " p p "
+    " goto-projects goto-projects ";
 }
 
 .about-section > h3 {
@@ -28,4 +29,11 @@
 
     text-align: left;
     font-size: larger;
+}
+
+
+.about-section > .goto-projects {
+    grid-area: goto-projects;
+
+    margin-bottom: 10%;
 }

@@ -1,154 +1,175 @@
-### Step 4 . Adding CSS
+### Step 5 . Adding Scrolling Buttona
 
-Let's start by added some nice font to our page [Google Fonts](https://fonts.google.com/) is a good place to start. Select a font you like and copy its link in the popup section that opens up.
+In this last section of actual coding i want to add little arrow buttons to the end of each section which scrolls down the page when clicked. To do this we need scrolling functionality thankfully this is readily available to us. If you search for "react scroll" one of the first links will be this [github page](https://github.com/fisshy/react-scroll) . In the readme section of that page it is explained how the project works, the import bits are :
 
 <br />
 
-for example this is the link for the Open Sans font `<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">` . We can add this HTML tag to `public/index.html` to include it in our website. Then in order to select this font head into `src/App.css` and add the following CSS property to the `.App` selector.
+* To install the package run the `npm install react-scroll` inside our project folder, let's do that now.
+
+<br />
+
+* The two important components in react-scroll that we'll be using are `Link` and `Element`. the way it works is that you add `Element` components to your page and then add `Link` component, when the `Link` is clicked the page will automatically scroll to where the `Element` is located. 
+
+<br />
+
+This is what `Element`s and `Link` look like. Notice the "place_to_scroll" value and how it connects the two tags.
 
 <br />
 
 ```
-.App {
-  text-align: center;
-  font-family: 'Open Sans', sans-serif;
+  <Element name="place_to_scroll" className="element">
+    
+
+  </Element>
+```
+
+<br />
+
+```
+<Link activeClass="active" to="place_to_scroll" spy={true} smooth={true} offset={0} duration={500} onSetActive={this.handleSetActive}>
+          Test 1
+        </Link>
+```
+
+<br />
+
+Let's add some `Element`s to the page, we want to scroll to the start of the next page which each click, so we have to add `Element`s to the start of each page. Head into `App.js` and import, `import { Element } from "react-scroll";` . Then add three elemets like the code below, 
+
+<br />
+
+```
+
+  import logo from "./logo.svg";
+  import "./App.css";
+
+  import { Element } from "react-scroll";
+
+  import TitleSection from "./components/TitleSection";
+  import AboutSection from "./components/AboutSection";
+  import ProjectsSection from "./components/ProjectsSection";
+
+  import Container from "./components/Container";
+
+  function App() {
+    return (
+      <div className="App">
+        <Container>
+          <Element name="home" />
+
+          <TitleSection />
+
+          <Element name="about" />
+
+          <AboutSection />
+
+          <Element name="projects" />
+
+          <ProjectsSection />
+        </Container>
+      </div>
+    );
+  }
+
+  export default App;
+
+```
+
+<br />
+
+Next we need actual buttons to click, as you might remember we've added thier icons to `public/images` and that paths to `data.json` when we craated `data.json`. Now go into `src/components` and create `Button.js`
+
+<br />
+
+```
+  import React, { Component } from "react";
+
+  import "./Button.css";
+
+  import { Link } from "react-scroll";
+
+  export default class Button extends Component {
+    render() {
+      const { icon, goto, className } = this.props;
+
+      return (
+        <div className={`button ${className}`}>
+          <Link
+            activeClass="active"
+            to={goto}
+            spy={true}
+            smooth={true}
+            offset={0}
+            duration={500}
+            onSetActive={this.handleSetActive}
+          >
+            <img src={icon} alt="button" style={{maxWidth:"30px"}}/>
+          </Link>
+        </div>
+      );
+    }
+  }
+
+
+```
+
+<br />
+
+I've set 3 props for Button component to set the "to" property of Link and "src" of the image and also to add a secondary "className" to each Element. I also imported `Button.css` which we will create now.
+
+<br />
+
+```
+.button {
+    cursor: pointer;
 }
 
 ```
 
 <br />
 
-that `text-align: center;` was in our project by default, let is stay there to make everything nice and centered.
+The property `cursor: pointer;` to make the arrow look like a link when hovered over .
+
 
 <br />
 
-
-Great, now our text is a bit better to look at :)
-
-#### Adding styling to TitleSection of the page 
-
-
-We will be using CSS grid to put elements on the page in the correct place. I will give a quick introduction too CSS grid and for more info check out [this site](https://css-tricks.com/snippets/css/complete-guide-grid/) .
-
-<br />
-
-Let's say we have these elements in our HTML
+Now we have `Button` components we can use, note that we need to give each Button 3 props. icon, goto, className. let's head into TitleSection, we need to chage that components a bit too add our little "down arrow", and modify `TitleSection.js` as follows,
 
 <br />
 
 ```
-    <div className="wrapper">
+  import React, { Component } from "react";
 
-      <div className="header">HEADER</div>
+  import data from "../data.json";
 
-      <div className="main">MAIN</div>
+  import "./TitleSection.css";
 
-      <div classname="aside">ASIDE</div>
-    </div>
+  import Button from "./Button";
 
-```
+  export default class TitleSection extends Component {
 
-<br />
+    render() {   
 
-And we want to place the elements of the page in the following way,
+      return (
+          <div className="title-section">
 
-```
-**************************  
-*         HEADER         *
-************************** 
-*          *             *
-* ASIDE    *    MAIN     *
-*          *             *
-*          *             *
-*          *             *
-*          *             *
-**************************  
+            <h1>{data.title}</h1>
+
+            <h2>{data.subtitle}</h2>
+
+            <Button goto="about" icon={data.icons.down} className="goto-about" />
+
+          </div>
+      );
+    }
+  }
 
 ```
 
 <br />
 
-To arrange the elements in this way add the CSS property `display: grid;` to the parent element, in this case `wrapper div`. the we add `grid-template-columns: 1fr 2fr;` to split the page vertically into ratios of 1 and 2 and also `grid-template-rows: 200px 1fr;` to split the page horizontally into a top section of 200 pixels and a bottom section of whatever amout is left.
-
-
-<br />
-
-Next we need to "block out" the page with our elements according to the templates we created, this is how we do it,
+The two changes are the `import Button from "./Button";` and the `Button` component in the page itself. note that i gave it `goto="about"` which makes it scroll down to the AboutSection on click and that `className="goto-about"` so we can modify its position in `TitleSection.css` . Modify the `grid-template-areas` and add `.title-section > .goto-about` to place the Button in the correct spot
 
 <br />
-
-```
-.wrapper{
-
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-template-rows: 200px 1fr;
-
-
-  /* we block out the page */
-
-  grid-template-areas:
-    "head head"
-    "aside main";
-  
-}
-
-/* to tell CSS what we mean by head, aside, main we need to assign grid-area to our divs */
-
-.header {
-  grid-area: head;
-}
-
-.main {
-  grid-area: main;
-}
-
-.aside {
-  grid-area: aside;
-}
-
-
-```
-
-<br />
-
-That was a quick introduction to CSS grid, now that we know how it works, let's use it to create the layout of our page
-
-<br />
-
-Since We've abstracted everything into Components, we can add styling to each component one by one. Let's start with TitleSection, Head into `src/TitleSection.js` and add this import line,
-
-<br />
-
-`import "./TitleSection.css";` 
-
-<br />
-
-Of course we now need to create the `TitleSection.css` inside `src/` folder, let's do that now. Create `src/TitleSection.css` and open it up.
-
-
-<br />
-
-We want the following layout for the TitleSectiob
-
-```
-**************************  
-*                        *
-*                        * 
-*          H1            *
-*                        *
-**************************
-*          H2            *
-*                        *
-*                        *
-*                        *
-**************************  
-
-```
-
-<br />
-
-Add these lines into `TitleSection.css`
 
 ```
 .title-section {
@@ -160,7 +181,8 @@ Add these lines into `TitleSection.css`
     grid-template-rows: 1fr 1fr;
     grid-template-areas: 
     "h1"
-    "h2";
+    "h2"
+    "goto-about";
 }
 
 .title-section > h1 {
@@ -173,38 +195,51 @@ Add these lines into `TitleSection.css`
     grid-area: h2;
 }
 
-```
+.title-section > .goto-about {
+    grid-area: goto-about;
 
-<br />
-
-Other than CSS grid stuff, i've just added a height for the page and a margin to H1 to make them render in the place that i like and added some color. Now the TitleSection should take one full window height and H1, H2 tags should be a bit apart from each other. Moving onto About Section
-
-<br />
-
-Create the corresponding `AboutSection.css` and import it into `AboutSection.js`. We want this layout,
-
-<br />
-
-We want the following layout for the TitleSectiob
-
-```
-**************************  
-*           *            *
-*           *            * 
-*     H3    *            *
-*           *            *
-************************** 
-*                        *
-*     P                  *
-*                        *
-*                        *
-**************************  
+    margin-bottom: 10%;
+}
 
 ```
 
 <br />
 
-Our CSS will be something like,
+Now we have to do the exact same thing to `AboutSection` and `ProjectsSection`. start with `AboutSection` and modify `AboutSection.js`,
+
+<br />
+
+```
+  import React, { Component } from "react";
+
+  import data from "../data.json";
+
+  import "./AboutSection.css";
+
+  import Button from "./Button";
+
+
+  export default class AboutSection extends Component {
+
+    render() {   
+
+      return (
+          <div className="about-section">
+            <h3>{data.sections[0].title}</h3>
+
+            <p>{data.sections[0].items[0].content}</p>
+
+            <Button goto="projects" icon={data.icons.down} className="goto-projects" />
+
+          </div>
+      );
+    }
+  }
+```
+
+<br />
+
+And it's CSS file, 
 
 <br />
 
@@ -216,10 +251,11 @@ Our CSS will be something like,
 
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 40% 1fr;
+    grid-template-rows: 40% 1fr 10%;
     grid-template-areas: 
     " h3 . "
-    " p p ";
+    " p p "
+    " goto-projects goto-projects ";
 }
 
 .about-section > h3 {
@@ -240,40 +276,20 @@ Our CSS will be something like,
     text-align: left;
     font-size: larger;
 }
-```
 
-<br />
 
-Finally for the Projects Section we want,
+.about-section > .goto-projects {
+    grid-area: goto-projects;
 
-<br />
-
-```
-**************************  
-*    H3     *            *
-**************************
-*    H4     *            * 
-**************************
-*                        *
-*        Project         *
-*                        *
-*        Project         *
-*                        *
-*        Project         *
-*                        *
-*          ...           *
-**************************  
+    margin-bottom: 10%;
+}
 
 ```
 
 <br />
 
-Now this one is a bit more complicated, since we want to support any number of Projects. so we make the bottom section of the page another grid (yes you can put grids inside other grids) and create a variable rows template for the inner grid. Here is the code to do it,
 
-<br />
-
-
-First i wrap each project in ProjectsSection in another div with class "projects-wrapper", now our `ProjectsSection.js` will look like this,
+Lastly and the Button to `ProjectsSection` just note that since we want to move back to the top of the page with this button we will use the "up" arrow instead of "down" . The js file will be like,
 
 <br />
 
@@ -284,6 +300,10 @@ First i wrap each project in ProjectsSection in another div with class "projects
 
   import "./ProjectsSection.css";
 
+  import Button from "./Button";
+
+
+
   export default class ProjectsSection extends Component {
     render() {
       return (
@@ -292,8 +312,6 @@ First i wrap each project in ProjectsSection in another div with class "projects
 
           <h4>{data.sections[1].subtitle}</h4>
 
-
-          {/* This is the new div */}
           <div className="projects-wrapper">
             {data.sections[1].items.map((project) => {
               return (
@@ -307,6 +325,8 @@ First i wrap each project in ProjectsSection in another div with class "projects
               );
             })}
           </div>
+
+          <Button goto="home" icon={data.icons.up} className="goto-home" />
         </div>
       );
     }
@@ -316,24 +336,24 @@ First i wrap each project in ProjectsSection in another div with class "projects
 
 <br />
 
-Now i can create the `ProjectsSection.css` as follows,
+And it's CSS file is , 
 
 <br />
 
-
-
 ```
 .projects-section {
+
 
     background-color: rgb(248, 243, 237);
 
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 5fr;
+    grid-template-rows: 1fr 1fr 5fr 10%;
     grid-template-areas: 
     " h3 . "
     " h4 . "
-    " projects projects";
+    " projects projects"
+    " goto-home goto-home";
 }
 
 .projects-section > h3 {
@@ -367,7 +387,7 @@ Now i can create the `ProjectsSection.css` as follows,
     display: grid;
     grid-auto-rows: 150px;
 
-    
+
     gap: 2rem;
 
     margin-top: 5%;
@@ -387,140 +407,28 @@ Now i can create the `ProjectsSection.css` as follows,
     padding: 1%;
 }
 
-```
 
-<br />
+.projects-section > .goto-home {
+    grid-area: goto-home;
 
-If the nested grid feels weird you can open the developer tools in the browser and check out the borderline of the grids by inspecting divs that have `display: grid;` .
-
-<br />
-
-We are almost done with the CSS of this page, but i want to add one more thing. I want the layout of the entire page to change if the window rendering the webpage is less than 900 pixels wide. So our page will look different on Mobile Phones than on Desktops. This feature is called "Responsive" ness of the web page.
-
-<br />
-
-This is why we created a "container" component for the page, let's go into the `Container.js`. Let's wrap the container div with `<div className="screen-wrapper">` and create and import `Container.css`. The Container component now looks like,
-
-<br />
-
-```
-import React, { Component } from "react";
-
-import "./Container.css"
-
-export default class Container extends Component {
-  render() {
-    const { children } = this.props;
-
-    return (
-      <div className="screen-wrapper">
-
-        <div className="container">
-          {children}
-        </div>
-
-      </div>
-    );
-  }
-}
-
-
-```
-
-<br />
-
-Let's head into `Container.css`, We want 2 different layouts for the screen:
-
-* window less than 900 pixel wide
-
-<br />
-
-```
-**************************  
-*                        *
-*                        *
-*                        *
-*                        *
-*       container        *
-*                        *
-*                        *
-*                        *
-*                        *
-**************************  
-
-```
-
-<br />
-
-* window greater than 900 pixel wide
-
-<br />
-
-```
-***************************  
-*   *                 *   *
-*   *                 *   *
-*   *                 *   *
-*   *                 *   *
-*   *    container    *   *
-*   *                 *   *
-*   *                 *   *
-*   *                 *   *
-*   *                 *   *
-***************************  
-
-```
-
-<br />
-
-Basically i want borders to the left and right of the container. Add these lines to  `Container.css` .
-
-<br />
-
-```
-.screen-wrapper {
-
-    background-color: rgb(89, 187, 252);
-
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-areas: 
-    " container ";
-}
-
-/* this part of the code runs only if window is more than 900 pixel wide  */
-@media (min-width: 900px) {
-    .screen-wrapper {
-      grid-template-columns: 1fr 5fr 1fr;
-      grid-template-areas:
-        " . container . ";
-  
-    }
-  }
-
-
-.screen-wrapper > .container {
-    grid-area: container;
 }
 
 ```
 
 <br />
 
-And with that we are done with the CSS section of our page. that took a long time :)
+Note that in these long files we only added a few lines and most of them were written before in the CSS section.
 
 <br />
 
-In the next section we will add buttons to each part of the page to scroll to the next section when clicked .
+Okay we are done yaaaaaaaay :)
 
 <br />
 
+You can see that we have a tiny arrow button at the end of each section will will scroll down to the next section when clicked. 
 
+<br />
 
+In the next and final section we will build and deploy this web page to github pages for everyone to see yayyy . 
 
-
-
-
-
-
-
+<br />
