@@ -1,4 +1,4 @@
-### Step 5 . Adding Scrolling Buttona
+### Step 5 . Adding Scrolling Buttons
 
 In this last section of actual coding i want to add little arrow buttons to the end of each section which scrolls down the page when clicked. To do this we need scrolling functionality thankfully this is readily available to us. If you search for "react scroll" one of the first links will be this [github page](https://github.com/fisshy/react-scroll) . In the readme section of that page it is explained how the project works, the import bits are :
 
